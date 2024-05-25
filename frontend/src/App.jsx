@@ -1,13 +1,19 @@
-
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import { Container } from "react-bootstrap";
 
 function App() {
-  
-
   return (
     <>
-      <h1>Hello world</h1>
+      <Header />
+      <main className="py-3">
+        <Container>
+          <h1>Welcome To TKShop</h1>
+        </Container>
+        <Footer/>
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
