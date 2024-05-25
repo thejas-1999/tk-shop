@@ -10,8 +10,9 @@ function App() {
         <Container>
           <h1>Welcome To TKShop</h1>
         </Container>
-        <Footer/>
+        
       </main>
+      <Footer/>
     </>
   );
 }
