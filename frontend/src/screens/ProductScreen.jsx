@@ -32,9 +32,8 @@ const ProductScreen = () => {
                 text={`${product.numReviews} reviews`}
               />
             </ListGroup.Item>
-            <ListGroup.Item>Price:  ₹{product.price}</ListGroup.Item>
+            <ListGroup.Item>Price: ₹{product.price}</ListGroup.Item>
             <ListGroup.Item>Description: {product.description}</ListGroup.Item>
-
           </ListGroup>
         </Col>
         <Col md={3}>
@@ -44,7 +43,7 @@ const ProductScreen = () => {
                 <Row>
                   <Col>Price:</Col>
                   <Col>
-                    <strong>${product.price}</strong>
+                    <strong>₹{product.price}</strong>
                   </Col>
                 </Row>
               </ListGroup.Item>
@@ -53,7 +52,16 @@ const ProductScreen = () => {
                   <Col>Status:</Col>
                   <Col>
                     <strong>
-                      {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}
+                      {product.countInStock > 0 ? (
+                        product.countInStock < 20 &&
+                        product.countInStock > 0 ? (
+                          <span style={{ color: "red" }}>Limited Stock</span>
+                        ) : (
+                          <span style={{ color: "green" }}>In Stock</span>
+                        )
+                      ) : (
+                        <span>Out Of Stock</span>
+                      )}
                     </strong>
                   </Col>
                 </Row>
