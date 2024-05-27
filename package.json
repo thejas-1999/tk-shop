@@ -1,0 +1,21 @@
+{
+  "name": "tkshop",
+  "version": "1.0.0",
+  "description": "e-commerce site",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "keywords": [],
+  "author": "Thejas.K",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.1"
+  }
+}
