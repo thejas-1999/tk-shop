@@ -2,7 +2,7 @@ const products = [
     {
         _id: '1',
         name: 'Airpods',
-        images:'/frontend/public/images/earpod.jpg',
+        images:'/images/earpod.jpg',
         description: 'Wireless Bluetooth earbuds with high-quality sound and a sleek design.',
         brand: 'Apple',
         category: 'Electronics',
@@ -14,7 +14,7 @@ const products = [
     {
         _id: '2',
         name: 'Galaxy S21',
-        images:'/frontend/public/images/laptop.jpg',
+        images:'/images/laptop.jpg',
         description: 'Samsung Galaxy S21 smartphone with 128GB storage and 8GB RAM.',
         brand: 'Samsung',
         category: 'Electronics',
@@ -26,7 +26,7 @@ const products = [
     {
         _id: '3',
         name: 'MacBook Pro',
-        images:'/frontend/public/images/laptop.jpg',
+        images:'/images/laptop.jpg',
         description: 'Apple MacBook Pro 16-inch laptop with M1 chip, 16GB RAM, and 512GB SSD.',
         brand: 'Apple',
         category: 'Computers',
@@ -38,7 +38,7 @@ const products = [
     {
         _id: '4',
         name: 'Sony WH-1000XM4',
-        images:'/frontend/public/images/headset.jpg',
+        images:'/images/headset.jpg',
         description: 'Sony wireless noise-cancelling over-ear headphones.',
         brand: 'Sony',
         category: 'Audio',
@@ -50,7 +50,7 @@ const products = [
     {
         _id: '5',
         name: 'Nintendo Switch',
-        images:'/frontend/public/images/ps4.jpg',
+        images:'/images/ps4.jpg',
         description: 'Nintendo Switch gaming console with Neon Blue and Red Joy-Con.',
         brand: 'Nintendo',
         category: 'Gaming',
@@ -62,7 +62,7 @@ const products = [
     {
         _id: '6',
         name: 'Fitbit Charge 4',
-        images:'/frontend/public/images/earpod.jpg',
+        images:'/images/earpod.jpg',
         description: 'Fitbit Charge 4 fitness and activity tracker with built-in GPS.',
         brand: 'Fitbit',
         category: 'Wearables',
@@ -74,7 +74,7 @@ const products = [
     {
         _id: '7',
         name: 'Dyson V11 Vacuum',
-        images:'/frontend/public/images/laptop.jpg',
+        images:'/images/laptop.jpg',
         description: 'Dyson V11 cordless vacuum cleaner with powerful suction and long battery life.',
         brand: 'Dyson',
         category: 'Home Appliances',
@@ -86,7 +86,7 @@ const products = [
     {
         _id: '8',
         name: 'GoPro HERO9',
-        images:'/frontend/public/images/earpod.jpg',
+        images:'/images/earpod.jpg',
         description: 'GoPro HERO9 Black action camera with 5K video and 20MP photos.',
         brand: 'GoPro',
         category: 'Cameras',
@@ -98,7 +98,7 @@ const products = [
     {
         _id: '9',
         name: 'iPad Pro',
-        images:'/frontend/public/images/earpod.jpg',
+        images:'/images/earpod.jpg',
         description: 'Apple iPad Pro 12.9-inch with Liquid Retina display, 128GB storage.',
         brand: 'Apple',
         category: 'Tablets',
@@ -110,7 +110,7 @@ const products = [
     {
         _id: '10',
         name: 'Kindle Paperwhite',
-        images:'/frontend/public/images/earpod.jpg',
+        images:'/images/earpod.jpg',
         description: 'Amazon Kindle Paperwhite with 8GB storage and waterproof design.',
         brand: 'Amazon',
         category: 'E-readers',
