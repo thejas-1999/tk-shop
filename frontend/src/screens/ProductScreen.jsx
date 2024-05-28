@@ -1,16 +1,28 @@
-import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
-import products from "../product"; // Assuming your products data is stored in 'products.js'
+/* import products from "../product";  */ //
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const ProductScreen = () => {
+  const [product, setProduct] = useState({});
   const { id: productId } = useParams();
-  const product = products.find((p) => p._id === productId);
 
-  if (!product) {
-    return <h2>Product not found</h2>;
-  }
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:8000/api/products/${productId}`
+        );
+        setProduct(data);
+      } catch (error) {
+        console.error(`Error to fetch individual product`);
+        setProduct({});
+      }
+    };
+    fetchProduct();
+  }, [productId]);
 
   return (
     <>
