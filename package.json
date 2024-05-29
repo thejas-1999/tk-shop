@@ -6,12 +6,16 @@
   "type": "module",
   "scripts": {
     "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js"
+    "dev": "nodemon backend/server.js",
+    "data:import": "node backend/seeder.js",
+    "data:destroy": " node backend/seeder.js -d"
   },
   "keywords": [],
   "author": "Thejas.K",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mongoose": "^8.4.0",
