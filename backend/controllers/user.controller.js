@@ -1,5 +1,6 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import User from "../models/user.model.js";
+import jwt from "jsonwebtoken";
 
 //@desc Auth user & get token
 //@route POST /api/users/login
@@ -9,6 +10,19 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "30d",
+    });
+
+    //set jwt as HTTP-only cookie
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== "development",
+      sameSite: "strict",
+      maxage: 30 * 24 * 60 * 60 * 1000,
+      //30 days
+    });
+
     res.json({
       _id: user._id,
       name: user.name,
@@ -19,7 +33,6 @@ const authUser = asyncHandler(async (req, res) => {
     res.status(402);
     throw new Error(`Invalid email or password`);
   }
-  
 });
 
 //@desc Register user
