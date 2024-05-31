@@ -1,16 +1,45 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import FormComponents from "../components/FormComponents";
+import Loader from "../components/Loader";
+import { useLoginMutation } from "../../slices/users.apiSlice"; // Ensure this path is correct
+import { setCredentials } from "../../slices/auth.apiSlice"; // Ensure this path is correct
+import { toast } from "react-toastify";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitHandler = (e) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const { search } = useLocation();
+  const sp = new URLSearchParams(search);
+  const redirect = sp.get("redirect") || "/";
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [userInfo, redirect, navigate]);
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(`submit`);
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      navigate(redirect);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
+
   return (
     <FormComponents>
       <h1>Sign In</h1>
@@ -22,7 +51,7 @@ const LoginScreen = () => {
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
+          />
         </Form.Group>
         <Form.Group controlId="password" className="my-3">
           <Form.Label>Password</Form.Label>
@@ -31,15 +60,19 @@ const LoginScreen = () => {
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
+          />
         </Form.Group>
-        <Button type="submit" variant="primary" className="mt-3">
+        <Button type="submit" variant="primary" className="mt-3" disabled={isLoading}>
           Sign In
         </Button>
+        {isLoading && <Loader />}
       </Form>
       <Row className="py-3">
         <Col>
-          New Customer? <Link to="/">Register</Link>
+          New Customer?{" "}
+          <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+            Register
+          </Link>
         </Col>
       </Row>
     </FormComponents>
