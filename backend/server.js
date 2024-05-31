@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import productRoutes from "./routes/product.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
@@ -12,6 +13,9 @@ app.use(cors());
 //body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//Cookie parser middleware
+app.use(cookieParser())
 
 const port = process.env.PORT || 5000;
 
