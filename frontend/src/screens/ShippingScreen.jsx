@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FormComponents from "../components/FormComponents";
 import { saveShippingAddress } from "../../slices/cart.apiSlice";
 import { Link } from "react-router-dom";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
@@ -27,10 +28,12 @@ const ShippingScreen = () => {
 
   return (
     <FormComponents>
-      <h1>Shipping</h1>
-      <Link className="btn btn-light my-3" to="/cart">
+        <CheckoutSteps step1 step2/>
+        <Link className="btn btn-light my-3" to="/cart">
         Go Back
       </Link>
+      <h1>Shipping</h1>
+     
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="address" className="my-2">
           <Form.Label>Address</Form.Label>
