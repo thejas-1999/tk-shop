@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import productRoutes from "./routes/product.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import orderRoutes from "./routes/order.routes.js";
 import cookieParser from "cookie-parser";
 dotenv.config();
 
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Cookie parser middleware
-app.use(cookieParser())
+app.use(cookieParser());
 
 const port = process.env.PORT || 5000;
 
@@ -23,7 +24,7 @@ const MONGO_URI = process.env.MONGO_URI;
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
-
+app.use("/api/orders", orderRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
