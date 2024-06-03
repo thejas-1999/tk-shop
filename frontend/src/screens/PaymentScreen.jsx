@@ -40,7 +40,7 @@ const PaymentScreen = () => {
               label="Paypal or Credit Card"
               id="paypal"
               value="paypal"
-              checked
+              checked={paymentMethod === "paypal"}
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
           </Col>
